@@ -35,6 +35,9 @@
 			</div><!-- end postmeta -->			
 		</article><!-- end post -->
 
+
+		<?php comments_template(); ?>
+
 		<?php endwhile; ?>
 	<?php else: ?>
 
