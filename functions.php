@@ -43,6 +43,7 @@ add_action( 'wp_print_scripts', 'awesome_comment_reply' );
 
 /**
  * Make some menu areas
+ * register them here first, then display with wp_nav_menu()
  */
 add_action('init', 'awesome_menu_areas');
 function awesome_menu_areas(){
@@ -51,6 +52,52 @@ function awesome_menu_areas(){
 		'top_menu' 		=> 'Top Menu Area',
 		'utilities' 	=> 'Utility Bar Area',
 	) );
+}
+/**
+ * Make some Widget Areas (dynamic sidebars)
+ * register them here first, then display with dynamic_sidebar()
+ */
+add_action('widgets_init', 'awesome_widget_areas');
+function awesome_widget_areas(){
+	register_sidebar(array(
+		'name' => 'Blog Sidebar',
+		'id' => 'blog_sidebar',
+		'description' => 'Appears next to all blog archives and posts',
+		//%1$s = dynamic ID, %2$s = dynamic classes
+		'before_widget' => '<section class="widget clearfix %2$s" id="%1$s">',
+		'after_widget' => '</section>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	));
+	register_sidebar(array(
+		'name' => 'Home Area',
+		'id' => 'home_area',
+		'description' => 'Appears on the Front Page',
+		'before_widget' => '<section class="widget clearfix %2$s" id="%1$s">',
+		'after_widget' => '</section>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	));
+	register_sidebar(array(
+		'name' => 'Page Sidebar',
+		'id' => 'page_sidebar',
+		'description' => 'Appears next to static pages',
+		'before_widget' => '<section class="widget clearfix %2$s" id="%1$s">',
+		'after_widget' => '</section>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	));
+	register_sidebar(array(
+		'name' => 'Footer Area',
+		'id' => 'footer_area',
+		'description' => 'Appears on the bottom of every view',
+		'before_widget' => '<section class="widget clearfix %2$s" id="%1$s">',
+		'after_widget' => '</section>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	));
+
+	
 }
 
 

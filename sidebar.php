@@ -1,4 +1,7 @@
 <aside id="sidebar"> 
+	<?php //show the 'blog_sidebar' widget area if it has widgets
+	if( ! dynamic_sidebar( 'blog_sidebar' ) ){ 
+		//Fallback content if blog sidebar is blank: ?>
 		<section id="categories" class="widget">
 			<h3 class="widget-title">Popular Categories </h3>
 			<ul>
@@ -42,4 +45,5 @@
 			<?php endif; ?>
 			</ul>
 		</section>
-	</aside><!-- end #sidebar -->
+	<?php } //end if blog sidebar ?>
+</aside><!-- end #sidebar -->
