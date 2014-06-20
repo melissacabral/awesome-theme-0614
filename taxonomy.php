@@ -3,11 +3,14 @@
 <main id="content">
 	<?php //THE LOOP
 		if( have_posts() ): ?>
+	
+		<h2 class="archive-title">Products filtered by: <?php single_term_title(); ?></h2>
+
 		<?php while( have_posts() ): the_post(); ?>
 
 		<article id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?>>
 			
-			<?php the_post_thumbnail('large', array( 'class' => 'product-image' ) ); ?>
+			<?php the_post_thumbnail('thumbnail', array( 'class' => 'thumb' ) ); ?>
 
 			<h2 class="entry-title"> 
 				<a href="<?php the_permalink(); ?>"> 
@@ -16,14 +19,6 @@
 			</h2>			
 
 			<div class="entry-content">
-				<?php the_meta();  //show all the custom fields (price and size) ?>
-				<?php 
-				//show the brand(s) that this product is attached to 
-				the_terms( $post->ID, 'brand', 'Brand: ' );
-
-				//show the feature(s) that this product is attached to 
-				the_terms( $post->ID, 'feature', '<br />Featuring: ' ); ?>
-
 				<?php 
 				//if viewing single post or page, show full content
 				if(is_singular()){
@@ -34,10 +29,17 @@
 				}			
 
 				?>
+
+				<?php $price = get_post_meta( $post->ID, 'Price', true ); ?>
+				<span class="product-price">
+					<?php echo $price; ?>
+				</span>
 			</div>
-			
+					
 		</article><!-- end post -->
 
+
+		<?php comments_template(); ?>
 
 		<?php endwhile; ?>
 
