@@ -26,6 +26,7 @@ function awesome_excerpt_length(){
 add_filter( 'excerpt_length', 'awesome_excerpt_length' );
 
 //fix [...]
+
 function awesome_readmore(){
 	return ' <a href="' . get_permalink() . '" class="readmore">Read More</a>';
 }
@@ -99,7 +100,6 @@ function awesome_widget_areas(){
 
 	
 }
-
 
 
 

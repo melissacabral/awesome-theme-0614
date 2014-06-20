@@ -1205,6 +1205,8 @@ RSS Feed Image
 .single-product .product-image{
 	max-width: 35%;
 	height:auto;
+	float:right;
+	margin-left:1em;
 }
 .tax-brand #content,
 .tax-feature #content,
